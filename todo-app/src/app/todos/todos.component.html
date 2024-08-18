@@ -1,0 +1,12 @@
+<ng-template #noTodos>
+    <p>No todo data to show.</p>
+</ng-template>
+
+<ng-container *ngIf="todos$ | async as todos">
+    <div *ngIf="todos.length; else noTodos">
+        <p>Current Todos:</p>
+       <ul>
+            <li *ngFor="let todo of todos">{{todo.title}}</li>   
+        </ul>  
+    </div>
+</ng-container>

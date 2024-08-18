@@ -2,11 +2,13 @@ import { Component, } from '@angular/core';
 import { FormControl, ReactiveFormsModule, FormsModule, Validators } from '@angular/forms';
 import { TodoService } from '../todo.service';
 import { Todo } from '../todo.model';
+import { TodosComponent } from '../todos/todos.component';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-todo',
   standalone: true,
-  imports: [ReactiveFormsModule, FormsModule],
+  imports: [ReactiveFormsModule, FormsModule, TodosComponent, AsyncPipe],
   providers: [],
   templateUrl: './todo.component.html',
   styleUrl: './todo.component.scss'
