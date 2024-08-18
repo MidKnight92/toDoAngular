@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Todo } from './todo.model';
-import { Filter } from './shared/filter.enum';
+import { Filter } from './shared/enums/filter.enum';
+import { generateId } from './shared/utils/id-util';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +11,9 @@ export class TodoService {
 
   constructor() { }
 
-  public add(todo: Partial<Todo>){
-
+  public add(title: Partial<Todo>){
+    this.todos.push({id: generateId(), completed: false, ...title} as Todo)
+    console.log(this.todos)
   }
 
   public remove(id: number){
