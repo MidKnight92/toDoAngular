@@ -1,0 +1,6 @@
+<form (ngSubmit)="submit()" >
+    <label for="task">Todo: </label>
+    <input type="text" [formControl]="task" id="task" />
+    <button type="submit" [disabled]="task.invalid">Submit</button>
+</form>
+
