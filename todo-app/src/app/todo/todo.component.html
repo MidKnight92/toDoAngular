@@ -3,4 +3,5 @@
     <input type="text" [formControl]="todo" id="todo" />
     <button type="submit" [disabled]="todo.invalid">Submit</button>
 </form>
+<small style="color:red">{{todo.errors?.['message']}}</small>
 <app-todos></app-todos>

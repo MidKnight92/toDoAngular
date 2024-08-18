@@ -6,7 +6,13 @@
     <div *ngIf="todos.length; else noTodos">
         <p>Current Todos:</p>
        <ul>
-            <li *ngFor="let todo of todos">{{todo.title}}</li>   
+            <li *ngFor="let todo of todos">
+                <a [routerLink]="[todo.id]">
+                   {{todo.title}} 
+                </a>
+            </li>   
         </ul>  
     </div>
 </ng-container>
+
+<router-outlet/>
