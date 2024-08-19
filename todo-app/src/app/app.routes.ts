@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { TodoComponent } from './todo/todo.component';
 import { TodoDetailsComponent } from './todo-details/todo-details.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 export const routes: Routes = [
     {   
@@ -15,4 +16,5 @@ export const routes: Routes = [
 
     },
     {path: '', redirectTo: '/todo', pathMatch: 'full'},
+    {path: '**', component: NotFoundComponent}
 ];
