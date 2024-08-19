@@ -9,7 +9,7 @@ import { of } from 'rxjs/internal/observable/of';
   providedIn: 'root'
 })
 export class TodoService {
-  private todos: Todo[] = [];
+  private todos: Todo[] = mockCompletedTodos; // Todo: remove mockCompletedTodos and reassign to []
 
   constructor() { }
 
@@ -29,16 +29,18 @@ export class TodoService {
 
   }
 
-  public getFilteredTask(filter: Filter): Observable<Todo[]>{
+  public getFilteredTodos(filter: Filter): Observable<Todo[]>{
+    console.log(this.todos)
     if (filter !== Filter.All){
-      return of(this.todos.filter(({completed}: Todo): boolean => this.isCompleted(filter) === completed));
+      return of(this.todos.filter(({completed}: Todo): boolean => this.isFilterEqualToCompleted(filter) === completed));
     } else {
       return of(this.todos);
     }
   }
 
-  private isCompleted(filter: Filter): boolean{
+  private isFilterEqualToCompleted(filter: Filter): boolean{
     return filter === Filter.Completed;
   }
-
 }
+
+const mockCompletedTodos = [{id: 1, title: 'mock1', completed: true}, {id: 2, title: 'mock2', completed: true}];

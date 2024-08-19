@@ -5,6 +5,7 @@ import { Filter } from '../shared/enums/filter.enum';
 import { Observable } from 'rxjs/internal/Observable';
 import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import { RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-todos',
@@ -19,6 +20,10 @@ export class TodosComponent implements OnInit {
   constructor(private todoService: TodoService){}
 
   ngOnInit(): void {
-    this.todos$ = this.todoService.getFilteredTask(Filter.All);
+    this.todos$ = this.todoService.getFilteredTodos(Filter.All);
+  }
+
+  getFilteredTodos(filter: string): void{
+   this.todos$ = this.todoService.getFilteredTodos(filter as Filter);
   }
 }
