@@ -13,6 +13,10 @@ export class TodoService {
 
   constructor() { }
 
+  public get(todoId: string): Observable<Todo>{
+    return of(this.todos.find(({id}: Todo): boolean => id === +todoId) ?? ({id: 0, title: "N/a", completed: false} as Todo));
+  }
+
   public add(title: Partial<Todo>): void{
     this.todos.push({id: generateId(), completed: false, ...title} as Todo);
   }

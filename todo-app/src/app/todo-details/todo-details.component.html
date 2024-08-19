@@ -1,1 +1,6 @@
-<p>todo-details works!</p>
+<ng-container *ngIf="todo$ | async as todo">
+    <h1>Todo Details:</h1>
+    <h2>{{ todo.title }}</h2>
+    <h3>{{ todo.id }}</h3>
+    <h4>Current Status: {{ todo.completed ? 'completed' : 'pending' }}</h4>    
+</ng-container>

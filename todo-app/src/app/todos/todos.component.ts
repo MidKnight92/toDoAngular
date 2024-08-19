@@ -4,12 +4,12 @@ import { TodoService } from '../todo.service';
 import { Filter } from '../shared/enums/filter.enum';
 import { Observable } from 'rxjs/internal/Observable';
 import { AsyncPipe, NgFor, NgIf } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-todos',
   standalone: true,
-  imports: [AsyncPipe, NgIf,NgFor, RouterModule,],
+  imports: [AsyncPipe, NgIf,NgFor, RouterModule, RouterLinkActive, RouterLink],
   templateUrl: './todos.component.html',
   styleUrl: './todos.component.scss'
 })
