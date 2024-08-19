@@ -3,7 +3,7 @@
 </ng-template>
 
 <ng-container *ngIf="todos$ | async as todos">
-    <div *ngIf="todos.length; else noTodos">
+    <div *ngIf="todos.length || (todosCount$ |async); else noTodos">
         <div>
             <button (click)="getFilteredTodos('all')">All Todos</button>
             <button (click)="getFilteredTodos('completed')">Completed Todos</button>

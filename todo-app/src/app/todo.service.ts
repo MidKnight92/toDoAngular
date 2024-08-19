@@ -4,12 +4,15 @@ import { Filter } from './shared/enums/filter.enum';
 import { generateId } from './shared/utils/id-util';
 import { Observable } from 'rxjs/internal/Observable';
 import { of } from 'rxjs/internal/observable/of';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TodoService {
-  private todos: Todo[] = mockCompletedTodos; // Todo: remove mockCompletedTodos and reassign to []
+  // private todos: Todo[] = mockCompletedTodos; // Todo: remove mockCompletedTodos after testing
+  private todos: Todo[] = [];
+  private todosCountSubject = new BehaviorSubject<number>(0);
 
   constructor() { }
 
@@ -19,6 +22,7 @@ export class TodoService {
 
   public add(title: Partial<Todo>): void{
     this.todos.push({id: generateId(), completed: false, ...title} as Todo);
+    this.todosCountSubject.next(this.todos.length);
   }
 
   public remove(todoId: number): Todo[]{
@@ -36,6 +40,10 @@ export class TodoService {
     } else {
       return of(this.todos);
     }
+  }
+
+  public getTodoCount(): Observable<number> {
+    return this.todosCountSubject.asObservable();
   }
 
   private isFilterEqualToCompleted(filter: Filter): boolean{
