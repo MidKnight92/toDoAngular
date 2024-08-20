@@ -2,7 +2,6 @@ import { Routes } from '@angular/router';
 import { TodoComponent } from './todo/todo.component';
 import { TodoDetailsComponent } from './todo-details/todo-details.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-// import { UpdateTodoComponent } from './update-todo/update-todo.component';
 import { unfinishedFormGuard } from './unfinished-form.guard';
 import { nonexistentIdGuard } from './nonexistent-id.guard';
 import { UpdateTodoComponent } from './update-todo/update-todo.component';
@@ -20,7 +19,7 @@ export const routes: Routes = [
             },
             {
                 path: ':id',
-                component: TodoDetailsComponent,
+                loadComponent: () => import('./todo-details/todo-details.component').then((component): typeof TodoDetailsComponent => component.TodoDetailsComponent),
                 canActivate: [nonexistentIdGuard],
                 canDeactivate: [unfinishedFormGuard]
             }
