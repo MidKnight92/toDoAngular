@@ -24,7 +24,5 @@ export class TodoComponent {
     const partialTodo: Partial<Todo>= {title: this.todo.value ?? undefined}
     this.todoService.add(partialTodo);
     this.todo.setValue('');
-  }
-
-  
+  } 
 }

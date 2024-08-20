@@ -2,6 +2,19 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.0.
 
+## Project Overview
+This project was developed to practice and demonstrate my understanding of Angular applications.The application showcases various key Angular concepts and techniques:
+
+- **ReactiveForms & Custom Validation:**
+Implemented in the todo.component.(ts/html). Created my own custom validation methods to handle the user adding only space and number inputs and showcase the appropriate error message. 
+
+- **Lazy Loading & Route Guards:**
+Incorporated lazying loading for 2 of the nested routes for standalone components to improve performance by loading components only when needed. Added 2 route guards to prevent user from access routes for todos that do not exist and another to prevent the user from navigating away when updating a todo before submiting changes.
+
+### Future Enchancements
+
+In the future, I plan to add a mock backend server, Http Client request, styles and animations.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
