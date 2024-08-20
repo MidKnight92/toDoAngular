@@ -25,8 +25,8 @@ export class TodoService {
     this.todosCountSubject.next(this.todos.length);
   }
 
-  public remove(todoId: number): Todo[]{
-    return this.todos.filter(({id}: Todo): boolean => id !== todoId);
+  public remove(todoId: number): void {
+    this.todos.filter(({id}: Todo): boolean => id !== todoId);
   }
 
   public update(todo: Partial<Todo>){

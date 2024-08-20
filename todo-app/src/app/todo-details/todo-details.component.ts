@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Todo } from '../todo.model';
-import { ActivatedRoute, ParamMap, RouterModule } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router, RouterModule } from '@angular/router';
 import { Observable } from 'rxjs/internal/Observable';
 import { filter, map, switchMap, tap } from 'rxjs';
 import { AsyncPipe, NgIf } from '@angular/common';
@@ -18,7 +18,7 @@ export class TodoDetailsComponent implements OnInit {
   public todo$!: Observable<Todo>;
   @Input() public id!: string;
 
-  constructor(private activatedRoute: ActivatedRoute, private todoService:TodoService){}
+  constructor(private activatedRoute: ActivatedRoute, private todoService: TodoService, private router: Router){}
   
   ngOnInit(): void {
     this.todo$ = this.activatedRoute.paramMap.pipe(
@@ -28,4 +28,8 @@ export class TodoDetailsComponent implements OnInit {
     )
   }
 
+  public deleteTodo(id: number): void {
+    this.todoService.remove(id);
+    this.router.navigate(['/todo']);
+  }
 }
