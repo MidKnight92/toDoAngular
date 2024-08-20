@@ -11,7 +11,13 @@ export const nonexistentIdGuard: CanActivateFn = (route, state) => {
   if (!routeId) return false;
 
   return todoService.get(routeId).pipe(
-    tap(()=> router.navigate(['/todo'])),
-    map(({id}: Todo): boolean => id !== 0)
+    map(({id}: Todo): boolean => {
+      if (id !== 0) {
+        return true;
+      } else {
+        router.navigate(['/not-found']);
+        return false
+      }
+    }),
   )
 };
