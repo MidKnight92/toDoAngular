@@ -3,6 +3,7 @@ import { TodoComponent } from './todo/todo.component';
 import { TodoDetailsComponent } from './todo-details/todo-details.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { UpdateTodoComponent } from './update-todo/update-todo.component';
+import { unfinishedFormGuard } from './unfinished-form.guard';
 
 export const routes: Routes = [
     {   
@@ -11,7 +12,8 @@ export const routes: Routes = [
         children: [
             {
                 path:':id/update', 
-                component: UpdateTodoComponent
+                component: UpdateTodoComponent,
+                canDeactivate: [unfinishedFormGuard]
             },
             {
                 path: ':id',

@@ -1,1 +1,12 @@
-<p>update-todo works!</p>
+<form #form="ngForm">
+    <label for="title">Todo Title:  </label>
+    <input type="text" id="title" name="title" [(ngModel)]="todo.title">
+    <br>
+    <label for="completed">Status:  </label>
+    <select id="status" name="completed [(ngModel)]="todo.completed>
+        <option value="false">Pending</option>
+        <option value="true">Completed</option>
+    </select>
+    <br>
+    <button type="submit">Submit</button>
+</form>
